@@ -8,13 +8,15 @@ const Home: NextPage = () => {
         <title>Threatdash</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-3xl text-neutral-800">Welcome to Threatdash</h1>
-      <a
-        href={"/dashboard"}
-        className="text-2xl text-neutral-600 hover:text-neutral-800"
-      >
-        Get Started
-      </a>
+      <div className="m-auto flex max-h-screen min-h-full min-w-full flex-col items-center justify-center">
+        <h1 className="text-3xl text-white">Welcome to Threatdash</h1>
+        <a
+          href={"/dashboard"}
+          className="text-2xl text-neutral-300 hover:text-neutral-100 motion-safe:animate-pulse"
+        >
+          Get Started →
+        </a>
+      </div>
     </>
   );
 };

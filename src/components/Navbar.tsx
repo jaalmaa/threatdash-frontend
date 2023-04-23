@@ -1,30 +1,33 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
-import { User } from "@clerk/nextjs/dist/api";
 
 export const Navbar: React.FC = () => {
   const user = useUser();
   return (
     <>
-      <nav className="relative flex w-full flex-wrap items-center justify-between bg-neutral-50 py-4 text-neutral-500 shadow-lg focus:text-neutral-700 dark:bg-neutral-600">
-        <div className="flex w-full flex-wrap items-center justify-between px-16">
-          <a
-            className="text-xl text-neutral-800 dark:text-neutral-200"
-            href="/"
-          >
+      <nav className="relative flex w-full flex-wrap bg-cyan-950 py-4">
+        <div className="flex w-full justify-between px-12">
+          <a className="text-xl text-white" href="/">
             Threatdash
           </a>
-          {user.isSignedIn ? (
-            <div className="flex flex-row">
-              <span className="mx-2 pt-1">
-                <p>Hello, {user.user.username}!</p>
-              </span>
-              <UserButton />
-            </div>
-          ) : (
-            <SignInButton>
-              <span className="cursor-pointer">Sign In</span>
-            </SignInButton>
-          )}
+          <div className="flex flex-row">
+            <a className="mx-8 pt-1 text-neutral-100" href="/about">
+              About
+            </a>
+            {user.isSignedIn ? (
+              <div className="flex flex-row">
+                <span className="mx-2 pt-1 text-neutral-100">
+                  <p>{user.user.username}</p>
+                </span>
+                <UserButton />
+              </div>
+            ) : (
+              <SignInButton>
+                <span className="cursor-pointer pt-1 text-neutral-100">
+                  Sign In
+                </span>
+              </SignInButton>
+            )}
+          </div>
         </div>
       </nav>
     </>

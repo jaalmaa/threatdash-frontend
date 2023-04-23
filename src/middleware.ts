@@ -16,7 +16,7 @@ export default withClerkMiddleware((request: NextRequest) => {
   const { userId } = getAuth(request);
   if (!userId) {
     const signInUrl = new URL("/sign-in", request.url);
-    signInUrl.searchParams.set("redirect-url", request.url);
+    signInUrl.searchParams.set("callbackUrl", request.url);
     return NextResponse.redirect(signInUrl);
   }
   return NextResponse.next();

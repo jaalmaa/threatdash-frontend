@@ -7,12 +7,10 @@ import "~/styles/globals.css";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
-      <div className="max-w-screen flex h-screen max-h-screen flex-col">
+      <div className="max-w-screen min-w-screen flex max-h-screen min-h-screen flex-col">
         <Navbar />
-        <main className="flex flex-grow flex-col items-center justify-center bg-purple-50">
-          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-            <Component {...pageProps} />
-          </div>
+        <main className="flex flex-grow bg-cyan-950 text-neutral-100">
+          <Component {...pageProps} />
         </main>
       </div>
     </ClerkProvider>
