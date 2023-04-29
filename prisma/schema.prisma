@@ -16,7 +16,7 @@ model sessiondata {
   id          String                 @id @default(auto()) @map("_id") @db.ObjectId
   commands    String[]
   credentials SessiondataCredentials
-  endTime     String
+  endTime     String?
   sensor      String
   session     String
   shasum      String[]
