@@ -3,7 +3,6 @@ import { useState } from "react";
 import type { sessiondata } from "@prisma/client";
 import { api } from "~/utils/api";
 import { EventData } from "~/components/EventData";
-import { clsx } from "clsx";
 
 const Dashboard: NextPage = () => {
   const sessiondata = api.sessiondata.getAll.useQuery();
