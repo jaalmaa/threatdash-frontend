@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { sessiondata } from "@prisma/client";
 import { api } from "~/utils/api";
 import { EventData } from "~/components/EventData";
+import { clsx } from "clsx";
 
 const Dashboard: NextPage = () => {
   const sessiondata = api.sessiondata.getAll.useQuery();
@@ -29,7 +30,12 @@ const Dashboard: NextPage = () => {
                   return (
                     <tr
                       key={session.id}
-                      className="cursor-pointer hover:bg-slate-200 hover:text-slate-800"
+                      className={
+                        "cursor-pointer hover:bg-slate-200 hover:text-slate-800" +
+                        (session.id === selectedSession?.id
+                          ? "border-collapse border-r-2 border-slate-200 hover:text-slate-800"
+                          : "")
+                      }
                       onClick={() => setSelectedSession(session)}
                     >
                       <td>{session.startTime}</td>
