@@ -1,6 +1,6 @@
 import type { sessiondata } from "@prisma/client";
 
-type EventDataProps = {
+export type EventDataProps = {
   session: sessiondata;
 };
 
