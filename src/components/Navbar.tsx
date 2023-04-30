@@ -1,4 +1,5 @@
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 export const Navbar: React.FC = () => {
   const user = useUser();
@@ -6,22 +7,22 @@ export const Navbar: React.FC = () => {
     <>
       <nav className="relative flex w-full flex-wrap bg-gray-800 py-4">
         <div className="flex w-full justify-between px-12">
-          <a className="text-xl text-white" href="/">
+          <Link className="text-xl text-white" href="/">
             Threatdash
-          </a>
+          </Link>
           <div className="flex flex-row">
-            <a
+            <Link
               className="mx-8 pt-1 text-neutral-100 hover:text-white"
               href="/about"
             >
               About
-            </a>
-            <a
+            </Link>
+            <Link
               className="mx-8 pt-1 text-neutral-100 hover:text-white"
               href="/dashboard"
             >
               Dashboard
-            </a>
+            </Link>
             {user.isSignedIn ? (
               <div className="flex flex-row">
                 <span className="mx-2 pt-1 text-neutral-100">

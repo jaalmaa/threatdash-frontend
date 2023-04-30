@@ -1,6 +1,7 @@
 import type { sessiondata } from "@prisma/client";
 import { useState } from "react";
 import { EventData } from "~/components/EventData";
+import { EventFeedLoading } from "~/components/EventFeedLoading";
 
 /* Extract to this component if event feed logic in dashboard page gets too complex */
 
@@ -48,7 +49,7 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
               </tbody>
             </table>
           ) : (
-            <p>Loading...</p>
+            <EventFeedLoading />
           )}
         </div>
       </div>

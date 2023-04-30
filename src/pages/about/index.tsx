@@ -36,8 +36,8 @@ const AboutPage: NextPage = () => {
       <p className="p-2 text-left">
         Whether you're a hobbyist interested in cybersecurity or a security
         professional looking to stay ahead of the latest threats, Threatdash has
-        something to offer, and offers a range of features that make it easy to
-        use and understand.
+        something to offer, and has a range of features that make it easy to use
+        and understand.
       </p>
     </div>
   );
