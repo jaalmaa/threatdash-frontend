@@ -16,6 +16,12 @@ export const Navbar: React.FC = () => {
             >
               About
             </a>
+            <a
+              className="mx-8 pt-1 text-neutral-100 hover:text-white"
+              href="/dashboard"
+            >
+              Dashboard
+            </a>
             {user.isSignedIn ? (
               <div className="flex flex-row">
                 <span className="mx-2 pt-1 text-neutral-100">
