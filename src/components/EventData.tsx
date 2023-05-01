@@ -19,13 +19,13 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
         </p>
         <span className="my-1 flex flex-row text-sm">
           Source IP Address:
-          <p className="ml-1 rounded-md border px-1 font-mono text-neutral-100">
+          <p className="ml-1 rounded-md border px-1 font-mono">
             {props.session.src_ip}
           </p>
         </span>
         <span className="my-1 flex flex-row text-sm">
           Credentials:
-          <p className="ml-1 rounded-md border px-1 font-mono text-neutral-100">
+          <p className="ml-1 rounded-md border px-1 font-mono">
             {props.session.credentials.username}:
             {props.session.credentials.password}
           </p>

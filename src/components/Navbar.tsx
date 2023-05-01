@@ -19,16 +19,16 @@ export const Navbar: React.FC = () => {
             </Link>
             <Link
               className="mx-8 pt-1 text-neutral-100 hover:text-white"
-              href="/dashboard"
+              href="/feed"
             >
-              Dashboard
+              Feed
             </Link>
             {user.isSignedIn ? (
               <div className="flex flex-row">
-                <span className="mx-2 pt-1 text-neutral-100">
-                  <p>{user.user.username}</p>
+                <span className="mx-2 flex flex-row text-neutral-100">
+                  <p className="mx-2 pt-1">{user.user.username}</p>
+                  <UserButton />
                 </span>
-                <UserButton />
               </div>
             ) : (
               <SignInButton>
