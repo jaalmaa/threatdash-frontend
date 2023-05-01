@@ -1,4 +1,5 @@
 import type { sessiondata } from "@prisma/client";
+import { EventDataAccordion } from "./EventDataAccordion";
 
 export type EventDataProps = {
   session: sessiondata;
@@ -30,19 +31,19 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
             {props.session.credentials.password}
           </p>
         </span>
-        <h2 className="mt-2 font-semibold">Command History</h2>
-        <ul className="rounded-lg border px-2 py-1">
-          {props.session.commands.map((command: string) => {
-            return (
-              <li className="font-mono text-sm" key={command}>
-                {command}
-              </li>
-            );
-          })}
-        </ul>
+        <EventDataAccordion displayName="Command History">
+          <ul className="rounded-lg border px-2 py-1">
+            {props.session.commands.map((command: string) => {
+              return (
+                <li className="font-mono text-sm" key={command}>
+                  {command}
+                </li>
+              );
+            })}
+          </ul>
+        </EventDataAccordion>
         {showUrls ? (
-          <>
-            <h2 className="mt-2 font-semibold">URLs</h2>
+          <EventDataAccordion displayName="URLs">
             <ul className="rounded-lg border px-2 py-1">
               {props.session.url.map((url: string) => {
                 return (
@@ -52,13 +53,12 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
                 );
               })}
             </ul>
-          </>
+          </EventDataAccordion>
         ) : (
           ""
         )}
         {showHashes ? (
-          <>
-            <h2 className="mt-2 font-semibold">File Hashes</h2>
+          <EventDataAccordion displayName="File Hashes">
             <ul className="rounded-lg border px-2 py-1">
               {props.session.shasum.map((shasum: string) => {
                 return (
@@ -68,7 +68,7 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
                 );
               })}
             </ul>
-          </>
+          </EventDataAccordion>
         ) : (
           ""
         )}
