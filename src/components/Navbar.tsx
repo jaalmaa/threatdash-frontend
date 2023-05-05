@@ -31,11 +31,12 @@ export const Navbar: React.FC = () => {
                 </span>
               </div>
             ) : (
-              <SignInButton>
-                <span className="cursor-pointer pt-1 text-neutral-100">
-                  Sign In
-                </span>
-              </SignInButton>
+              <Link
+                className="mx-8 pt-1 text-neutral-100 hover:text-white"
+                href="/sign-in"
+              >
+                Sign in
+              </Link>
             )}
           </div>
         </div>
