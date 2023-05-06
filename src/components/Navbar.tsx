@@ -1,4 +1,4 @@
-import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
 export const Navbar: React.FC = () => {
