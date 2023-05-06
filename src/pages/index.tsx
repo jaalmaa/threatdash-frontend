@@ -13,7 +13,7 @@ const Home: NextPage = () => {
         <h1 className="text-3xl text-white">Welcome to Threatdash</h1>
         <Link
           href={"/feed"}
-          className="m-4 text-2xl text-neutral-300 hover:text-neutral-100 motion-safe:animate-pulse"
+          className="m-4 text-2xl text-neutral-300 hover:animate-none hover:text-neutral-100 motion-safe:animate-pulse"
         >
           Get Started →
         </Link>

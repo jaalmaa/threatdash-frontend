@@ -12,13 +12,20 @@ export const Navbar: React.FC = () => {
           </Link>
           <div className="flex flex-row">
             <Link
-              className="mx-8 pt-1 text-neutral-100 hover:text-white"
+              className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
               href="/about"
             >
               About
             </Link>
+            <a
+              target="_blank"
+              className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
+              href="https://blog.jaalma.io"
+            >
+              Blog
+            </a>
             <Link
-              className="mx-8 pt-1 text-neutral-100 hover:text-white"
+              className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
               href="/feed"
             >
               Feed
@@ -26,13 +33,12 @@ export const Navbar: React.FC = () => {
             {user.isSignedIn ? (
               <div className="flex flex-row">
                 <span className="mx-2 flex flex-row text-neutral-100">
-                  <p className="mx-2 pt-1">{user.user.username}</p>
                   <UserButton />
                 </span>
               </div>
             ) : (
               <Link
-                className="mx-8 pt-1 text-neutral-100 hover:text-white"
+                className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
                 href="/sign-in"
               >
                 Sign in
