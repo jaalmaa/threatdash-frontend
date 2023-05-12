@@ -6,7 +6,7 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav className="relative flex w-full flex-wrap bg-gray-800 py-4">
-        <div className="flex w-full justify-between px-12">
+        <div className="flex h-8 w-full justify-between px-12">
           <Link className="text-xl text-white" href="/">
             Threatdash
           </Link>
