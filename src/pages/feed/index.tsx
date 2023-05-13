@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { api } from "~/utils/api";
-import { EventFeed } from "~/components/EventFeed";
+import { EventsDashboard } from "~/components/EventsDashboard";
 
 const Dashboard: NextPage = () => {
   const sessiondata = api.sessiondata.getAll.useQuery();
@@ -9,7 +9,7 @@ const Dashboard: NextPage = () => {
       <h1 className="mx-16 rounded-lg bg-slate-700 p-2 text-center text-3xl shadow-lg">
         Event Feed
       </h1>
-      <EventFeed sessiondata={sessiondata.data} />
+      <EventsDashboard sessiondata={sessiondata.data} />
     </div>
   );
 };
