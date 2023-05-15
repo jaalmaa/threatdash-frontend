@@ -15,8 +15,8 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   >(undefined);
 
   return (
-    <>
-      <div className="w-1/2 p-4">
+    <div className="flex flex-row px-4">
+      <div className="w-1/2 pt-3">
         <div>
           {props.sessiondata ? (
             <table className="w-full text-center">
@@ -62,6 +62,6 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
           </p>
         )}
       </div>
-    </>
+    </div>
   );
 };
