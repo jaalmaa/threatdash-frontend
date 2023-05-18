@@ -8,14 +8,24 @@ type EventDashboardProps = {
 type EventDataMetrics = {
   TotalAttacks: number;
   UniqueSources: number;
-  UniqueFiles: number;
+  UniqueFiles?: number;
 };
 
 /* TODO refactor into separate module */
 const GenerateEventDataMetrics = (
   EventData: sessiondata[]
 ): EventDataMetrics => {
-  return { TotalAttacks: EventData.length, UniqueSources: 2, UniqueFiles: 1 };
+  const UniqueSources: string[] = [
+    ...new Set(EventData.map((session: sessiondata) => session.src_ip)),
+  ];
+  const UniqueFiles: string[] = [
+    ...new Set(EventData.map((session: sessiondata) => session.shasum).flat()),
+  ];
+  return {
+    TotalAttacks: EventData.length,
+    UniqueSources: UniqueSources.length,
+    UniqueFiles: UniqueFiles.length,
+  };
 };
 
 export const EventDashboard: React.FC<EventDashboardProps> = (
@@ -25,7 +35,9 @@ export const EventDashboard: React.FC<EventDashboardProps> = (
     return <EventDashboardLoading />;
   }
 
-  const EventDataMetrics = GenerateEventDataMetrics(props.sessiondata);
+  const EventDataMetrics: EventDataMetrics = GenerateEventDataMetrics(
+    props.sessiondata
+  );
 
   return (
     <div className="mx-16 h-full">
@@ -51,7 +63,7 @@ export const EventDashboard: React.FC<EventDashboardProps> = (
           </div>
         </div>
         <div className="mb-8 h-3/5 py-4">
-          <div className="h-full rounded-xl border-2 border-slate-200"></div>
+          <div className="h-full rounded-xl border-2 border-slate-200 shadow-lg"></div>
         </div>
       </div>
     </div>
