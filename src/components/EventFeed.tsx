@@ -40,7 +40,7 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
                       }
                       onClick={() => setSelectedSession(session)}
                     >
-                      <td>{session.startTime}</td>
+                      <td>{new Date(session.startTime).toUTCString()}</td>
                       <td>{session.sensor}</td>
                       <td>{session.commands.length}</td>
                     </tr>

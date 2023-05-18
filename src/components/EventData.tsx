@@ -12,10 +12,10 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
   return (
     <div className="w-full overflow-auto break-words">
       <div className="text-sm">
-        <p>Start time: {props.session.startTime}</p>
+        <p>Start time: {new Date(props.session.startTime).toUTCString()}</p>
         <p>
           {props.session.endTime
-            ? `End time: ${props.session.endTime}`
+            ? `End time: ${new Date(props.session.endTime).toUTCString()}`
             : "Attack ongoing"}
         </p>
         <span className="my-1 flex flex-row text-sm">
