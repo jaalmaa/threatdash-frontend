@@ -3,14 +3,9 @@ import { EventFeed } from "./EventFeed";
 import { EventDashboard } from "./EventDashboard";
 import { useState } from "react";
 
-type EventsDashboardProps = {
-  sessiondata: sessiondata[] | undefined;
-};
 type SelectedPage = "dashboard" | "feed";
 
-export const EventsDashboard: React.FC<EventsDashboardProps> = (
-  props: EventsDashboardProps
-) => {
+export const EventsDashboard: React.FC = () => {
   const [SelectedPage, setSelectedPage] = useState<SelectedPage>("dashboard");
   return (
     <div className="mx-16 my-4 flex flex-1 flex-col rounded-lg bg-slate-700 shadow-lg">
@@ -41,11 +36,7 @@ export const EventsDashboard: React.FC<EventsDashboardProps> = (
         </ul>
       </div>
       <div className="p-2"></div>
-      {SelectedPage === "dashboard" ? (
-        <EventDashboard sessiondata={props.sessiondata} />
-      ) : (
-        <EventFeed sessiondata={props.sessiondata} />
-      )}
+      {SelectedPage === "dashboard" ? <EventDashboard /> : <EventFeed />}
     </div>
   );
 };

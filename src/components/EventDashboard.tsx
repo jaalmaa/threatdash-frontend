@@ -1,43 +1,12 @@
-import type { sessiondata } from "@prisma/client";
+import { api } from "~/utils/api";
 import { EventDashboardLoading } from "./EventDashboardLoading";
+import { EventsHistogram } from "./EventsHistogram";
 
-type EventDashboardProps = {
-  sessiondata: sessiondata[] | undefined;
-};
-
-type EventDataMetrics = {
-  TotalAttacks: number;
-  UniqueSources: number;
-  UniqueFiles?: number;
-};
-
-/* TODO refactor into separate module */
-const GenerateEventDataMetrics = (
-  EventData: sessiondata[]
-): EventDataMetrics => {
-  const UniqueSources: string[] = [
-    ...new Set(EventData.map((session: sessiondata) => session.src_ip)),
-  ];
-  const UniqueFiles: string[] = [
-    ...new Set(EventData.map((session: sessiondata) => session.shasum).flat()),
-  ];
-  return {
-    TotalAttacks: EventData.length,
-    UniqueSources: UniqueSources.length,
-    UniqueFiles: UniqueFiles.length,
-  };
-};
-
-export const EventDashboard: React.FC<EventDashboardProps> = (
-  props: EventDashboardProps
-) => {
-  if (!props.sessiondata) {
+export const EventDashboard: React.FC = () => {
+  const EventDataMetrics = api.sessiondata.getStatistics.useQuery().data;
+  if (!EventDataMetrics) {
     return <EventDashboardLoading />;
   }
-
-  const EventDataMetrics: EventDataMetrics = GenerateEventDataMetrics(
-    props.sessiondata
-  );
 
   return (
     <div className="mx-16 h-full">
@@ -52,18 +21,20 @@ export const EventDashboard: React.FC<EventDashboardProps> = (
           <div className="mx-4 flex h-full w-1/3 flex-col rounded-lg border-2 border-slate-200 p-6 text-center font-semibold shadow-lg">
             Unique Attack Sources:{" "}
             <span className="m-auto text-6xl">
-              {EventDataMetrics.UniqueSources}
+              {EventDataMetrics.TotalUniqueSources}
             </span>
           </div>
           <div className="ml-4 flex h-full w-1/3 flex-col rounded-lg border-2 border-slate-200 p-6 text-center font-semibold shadow-lg">
             Unique Files Observed:{" "}
             <span className="m-auto text-6xl">
-              {EventDataMetrics.UniqueFiles}
+              {EventDataMetrics.TotalUniqueHashes}
             </span>
           </div>
         </div>
         <div className="mb-8 h-3/5 py-4">
-          <div className="h-full rounded-xl border-2 border-slate-200 shadow-lg"></div>
+          <div className="h-full max-h-full rounded-xl border-2 border-slate-200 p-2 shadow-lg">
+            <EventsHistogram EventsByDay={EventDataMetrics.EventsByDay} />
+          </div>
         </div>
       </div>
     </div>
