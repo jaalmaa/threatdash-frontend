@@ -6,6 +6,11 @@ import { EventFeedLoading } from "~/components/EventFeedLoading";
 
 export const EventFeed: React.FC = () => {
   const sessiondata = api.sessiondata.getAll.useQuery().data;
+  const sortedSessionData = sessiondata?.sort((x, y) => {
+    let xTimestamp = new Date(x.startTime).getTime();
+    let yTimestamp = new Date(y.startTime).getTime();
+    return yTimestamp - xTimestamp;
+  });
   const [selectedSession, setSelectedSession] = useState<
     sessiondata | undefined
   >(undefined);
@@ -14,7 +19,7 @@ export const EventFeed: React.FC = () => {
     <div className="flex h-full flex-row px-4">
       <div className="w-1/2">
         <div>
-          {sessiondata ? (
+          {sortedSessionData ? (
             <table className="w-full text-center">
               <thead>
                 <tr>
@@ -24,7 +29,7 @@ export const EventFeed: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="">
-                {sessiondata.map((session: sessiondata) => {
+                {sortedSessionData.map((session: sessiondata) => {
                   return (
                     <tr
                       key={session.id}
