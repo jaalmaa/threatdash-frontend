@@ -11,14 +11,14 @@ const isPublic = (path: string) => {
 };
 
 export default withClerkMiddleware((request: NextRequest) => {
-  // if (isPublic(request.nextUrl.pathname)) return NextResponse.next();
+  if (isPublic(request.nextUrl.pathname)) return NextResponse.next();
 
-  // const { userId } = getAuth(request);
-  // if (!userId) {
-  //   const signInUrl = new URL("/sign-in", request.url);
-  //   signInUrl.searchParams.set("callbackUrl", request.url);
-  //   return NextResponse.redirect(signInUrl);
-  // }
+  const { userId } = getAuth(request);
+  if (!userId) {
+    const signInUrl = new URL("/sign-in", request.url);
+    signInUrl.searchParams.set("callbackUrl", request.url);
+    return NextResponse.redirect(signInUrl);
+  }
   return NextResponse.next();
 });
 

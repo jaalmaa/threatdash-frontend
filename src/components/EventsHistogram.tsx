@@ -41,18 +41,23 @@ const options = {
 
 type EventsHistogramProps = {
   EventsByDay: SessionDay;
+  MaximumDisplayedDays: number;
 };
 
 export const EventsHistogram: React.FC<EventsHistogramProps> = (
   props: EventsHistogramProps
 ) => {
-  const labels = Object.keys(props.EventsByDay);
+  const labels = Object.keys(props.EventsByDay).slice(
+    -props.MaximumDisplayedDays
+  );
   const data = {
     labels,
     datasets: [
       {
         label: "Successful Attacks",
-        data: Object.values(props.EventsByDay),
+        data: Object.values(props.EventsByDay).slice(
+          -props.MaximumDisplayedDays
+        ),
         backgroundColor: "rgba(226, 232, 240, 0.75)",
       },
     ],

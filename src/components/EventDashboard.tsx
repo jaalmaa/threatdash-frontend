@@ -33,7 +33,10 @@ export const EventDashboard: React.FC = () => {
         </div>
         <div className="mb-8 h-3/5 py-4">
           <div className="h-full max-h-full rounded-xl border-2 border-slate-200 p-2 shadow-lg">
-            <EventsHistogram EventsByDay={EventDataMetrics.EventsByDay} />
+            <EventsHistogram
+              MaximumDisplayedDays={20}
+              EventsByDay={EventDataMetrics.EventsByDay}
+            />
           </div>
         </div>
       </div>
