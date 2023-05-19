@@ -1,15 +1,11 @@
 import type { sessiondata } from "@prisma/client";
+import { api } from "~/utils/api";
 import { useState } from "react";
 import { EventData } from "~/components/EventData";
 import { EventFeedLoading } from "~/components/EventFeedLoading";
 
-/* Extract to this component if event feed logic in dashboard page gets too complex */
-
-type EventFeedProps = {
-  sessiondata: sessiondata[] | undefined;
-};
-
-export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
+export const EventFeed: React.FC = () => {
+  const sessiondata = api.sessiondata.getAll.useQuery().data;
   const [selectedSession, setSelectedSession] = useState<
     sessiondata | undefined
   >(undefined);
@@ -18,17 +14,17 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
     <div className="flex h-full flex-row px-4">
       <div className="w-1/2">
         <div>
-          {props.sessiondata ? (
+          {sessiondata ? (
             <table className="w-full text-center">
               <thead>
                 <tr>
                   <th>Timestamp</th>
-                  <th>Source</th>
+                  <th>Data Source</th>
                   <th>Commands</th>
                 </tr>
               </thead>
               <tbody className="">
-                {props.sessiondata.map((session: sessiondata) => {
+                {sessiondata.map((session: sessiondata) => {
                   return (
                     <tr
                       key={session.id}
