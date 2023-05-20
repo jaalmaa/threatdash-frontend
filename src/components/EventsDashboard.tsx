@@ -1,4 +1,3 @@
-import type { sessiondata } from "@prisma/client";
 import { EventFeed } from "./EventFeed";
 import { EventDashboard } from "./EventDashboard";
 import { useState } from "react";

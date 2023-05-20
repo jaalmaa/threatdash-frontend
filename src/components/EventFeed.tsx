@@ -37,7 +37,7 @@ export const EventFeed: React.FC = () => {
                         "cursor-pointer hover:bg-slate-200 hover:text-slate-800" +
                         (session.id === selectedSession?.id
                           ? "border-collapse border-r-2 border-slate-200 hover:text-slate-800"
-                          : "border-collapse border-x-2 border-transparent hover:text-slate-800")
+                          : "border-collapse border-r-2 border-transparent hover:text-slate-800")
                       }
                       onClick={() => setSelectedSession(session)}
                     >

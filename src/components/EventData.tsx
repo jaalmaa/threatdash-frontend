@@ -13,10 +13,10 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
     <div className="w-full overflow-auto break-words">
       <div className="text-sm">
         <p>Start time: {new Date(props.session.startTime).toUTCString()}</p>
-        <p>
+        <p className={props.session.endTime ? "" : "font-bold"}>
           {props.session.endTime
             ? `End time: ${new Date(props.session.endTime).toUTCString()}`
-            : "Attack ongoing"}
+            : "Interaction currently in progress..."}
         </p>
         <span className="my-1 flex flex-row text-sm">
           Source IP Address:
