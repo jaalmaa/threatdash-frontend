@@ -4,7 +4,11 @@ import { useState } from "react";
 import { EventData } from "~/components/EventData";
 import { EventFeedLoading } from "~/components/EventFeedLoading";
 
-export const EventFeed: React.FC = () => {
+type EventFeedProps = {
+  maximumDisplayedEvents: number;
+};
+
+export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   const sessiondata = api.sessiondata.getAll.useQuery().data;
   const sortedSessionData = sessiondata?.sort((x, y) => {
     let xTimestamp = new Date(x.startTime).getTime();
@@ -29,24 +33,26 @@ export const EventFeed: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="">
-                {sortedSessionData.map((session: sessiondata) => {
-                  return (
-                    <tr
-                      key={session.id}
-                      className={
-                        "cursor-pointer hover:bg-slate-200 hover:text-slate-800" +
-                        (session.id === selectedSession?.id
-                          ? "border-collapse border-r-2 border-slate-200 hover:text-slate-800"
-                          : "border-collapse border-r-2 border-transparent hover:text-slate-800")
-                      }
-                      onClick={() => setSelectedSession(session)}
-                    >
-                      <td>{new Date(session.startTime).toUTCString()}</td>
-                      <td>{session.sensor}</td>
-                      <td>{session.commands.length}</td>
-                    </tr>
-                  );
-                })}
+                {sortedSessionData
+                  .slice(-props.maximumDisplayedEvents)
+                  .map((session: sessiondata) => {
+                    return (
+                      <tr
+                        key={session.id}
+                        className={
+                          "cursor-pointer hover:bg-slate-200 hover:text-slate-800" +
+                          (session.id === selectedSession?.id
+                            ? "border-collapse border-r-2 border-slate-200 hover:text-slate-800"
+                            : "border-collapse border-r-2 border-transparent hover:text-slate-800")
+                        }
+                        onClick={() => setSelectedSession(session)}
+                      >
+                        <td>{new Date(session.startTime).toUTCString()}</td>
+                        <td>{session.sensor}</td>
+                        <td>{session.commands.length}</td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           ) : (

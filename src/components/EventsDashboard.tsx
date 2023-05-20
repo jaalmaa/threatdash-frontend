@@ -35,7 +35,11 @@ export const EventsDashboard: React.FC = () => {
         </ul>
       </div>
       <div className="p-2"></div>
-      {SelectedPage === "dashboard" ? <EventDashboard /> : <EventFeed />}
+      {SelectedPage === "dashboard" ? (
+        <EventDashboard />
+      ) : (
+        <EventFeed maximumDisplayedEvents={20} />
+      )}
     </div>
   );
 };
