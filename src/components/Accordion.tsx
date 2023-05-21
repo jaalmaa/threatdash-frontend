@@ -1,13 +1,12 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
+import type { ReactNode } from "react";
 
-export type EventDataAccordionProps = {
+export type AccordionProps = {
   displayName: string;
   children: ReactNode;
 };
 
-export const EventDataAccordion: React.FC<EventDataAccordionProps> = (
-  props: EventDataAccordionProps
-) => {
+export const Accordion: React.FC<AccordionProps> = (props: AccordionProps) => {
   const [showChildren, setshowChildren] = useState<boolean>(true);
   return (
     <div className="mx-auto my-2 max-w-full">

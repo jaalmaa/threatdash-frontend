@@ -46,7 +46,7 @@ export const api = createTRPCNext<AppRouter>({
             if (!ctx?.req?.headers) {
               return {};
             }
-            const { connection: _connection, ...headers } = ctx.req.headers;
+            const { ...headers } = ctx.req.headers;
             return headers;
           },
         }),

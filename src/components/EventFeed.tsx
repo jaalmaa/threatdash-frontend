@@ -2,7 +2,7 @@ import type { sessiondata } from "@prisma/client";
 import { api } from "~/utils/api";
 import { useState } from "react";
 import { EventData } from "~/components/EventData";
-import { EventFeedLoading } from "~/components/EventFeedLoading";
+import { FeedLoading } from "~/pages/dashboard/feed/loading";
 
 type EventFeedProps = {
   maximumDisplayedEvents: number;
@@ -11,8 +11,8 @@ type EventFeedProps = {
 export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   const sessiondata = api.sessiondata.getAll.useQuery().data;
   const sortedSessionData = sessiondata?.sort((x, y) => {
-    let xTimestamp = new Date(x.startTime).getTime();
-    let yTimestamp = new Date(y.startTime).getTime();
+    const xTimestamp = new Date(x.startTime).getTime();
+    const yTimestamp = new Date(y.startTime).getTime();
     return yTimestamp - xTimestamp;
   });
   const [selectedSession, setSelectedSession] = useState<
@@ -20,7 +20,7 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   >(undefined);
 
   return (
-    <div className="flex h-full flex-row px-4">
+    <div className="flex flex-row px-4">
       <div className="w-1/2">
         <div>
           {sortedSessionData ? (
@@ -56,7 +56,7 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
               </tbody>
             </table>
           ) : (
-            <EventFeedLoading />
+            <FeedLoading />
           )}
         </div>
       </div>

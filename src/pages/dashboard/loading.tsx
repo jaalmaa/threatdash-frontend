@@ -1,4 +1,4 @@
-export const EventDashboardLoading: React.FC = () => {
+export const DashboardLoading: React.FC = () => {
   return (
     <div className="mx-16 mb-8 flex h-full flex-col">
       <div className="flex h-1/2 w-full flex-row py-4">

@@ -1,5 +1,5 @@
 import type { sessiondata } from "@prisma/client";
-import { EventDataAccordion } from "./EventDataAccordion";
+import { Accordion } from "~/components/Accordion";
 
 export type EventDataProps = {
   session: sessiondata;
@@ -31,7 +31,7 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
             {props.session.credentials.password}
           </p>
         </span>
-        <EventDataAccordion displayName="Command History">
+        <Accordion displayName="Command History">
           <ul className="rounded-lg border px-2 py-1">
             {props.session.commands.map((command: string) => {
               return (
@@ -41,9 +41,9 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
               );
             })}
           </ul>
-        </EventDataAccordion>
+        </Accordion>
         {showUrls ? (
-          <EventDataAccordion displayName="URLs">
+          <Accordion displayName="URLs">
             <ul className="rounded-lg border px-2 py-1">
               {props.session.url.map((url: string) => {
                 return (
@@ -53,12 +53,12 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
                 );
               })}
             </ul>
-          </EventDataAccordion>
+          </Accordion>
         ) : (
           ""
         )}
         {showHashes ? (
-          <EventDataAccordion displayName="File Hashes">
+          <Accordion displayName="File Hashes">
             <ul className="rounded-lg border px-2 py-1">
               {props.session.shasum.map((shasum: string) => {
                 return (
@@ -68,7 +68,7 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
                 );
               })}
             </ul>
-          </EventDataAccordion>
+          </Accordion>
         ) : (
           ""
         )}

@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply h-full;
+  @apply w-full;
+}
+body {
+  @apply h-full;
+  @apply w-full;
+}
+div#__next {
+  @apply h-full;
+  @apply w-full;
+}
+
 details summary::-webkit-details-marker {
   display: none;
 }

@@ -6,7 +6,7 @@ export const Navbar: React.FC = () => {
   return (
     <>
       <nav className="relative flex w-full flex-wrap bg-gray-800 py-4">
-        <div className="flex h-8 w-full justify-between px-12">
+        <div className="flex h-8 w-full justify-between px-8">
           <Link className="text-xl text-white" href="/">
             Threatdash
           </Link>
@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
             </a>
             <Link
               className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
-              href="/events"
+              href="/dashboard"
             >
               Dashboard
             </Link>
