@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import { EventsDashboard } from "~/components/EventsDashboard";
+import { EventsLayout } from "./layout";
 
-const Dashboard: NextPage = () => {
+const Events: NextPage = () => {
   return (
-    <div className="flex max-h-full w-full flex-col">
+    <EventsLayout>
       <EventsDashboard />
-    </div>
+    </EventsLayout>
   );
 };
 
-export default Dashboard;
+export default Events;

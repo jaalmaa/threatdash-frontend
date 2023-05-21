@@ -26,9 +26,9 @@ export const Navbar: React.FC = () => {
             </a>
             <Link
               className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
-              href="/feed"
+              href="/events"
             >
-              Feed
+              Dashboard
             </Link>
             {user.isSignedIn ? (
               <div className="flex flex-row">
