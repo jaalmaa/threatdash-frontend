@@ -21,7 +21,7 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
 
   return (
     <div className="flex flex-row px-4">
-      <div className="w-1/2">
+      <div className="w-1/2 pr-8">
         <div>
           {sortedSessionData ? (
             <table className="w-full text-center">
