@@ -44,7 +44,7 @@ type EventsHistogramProps = {
   MaximumDisplayedDays: number;
 };
 
-export const EventsHistogram: React.FC<EventsHistogramProps> = (
+const EventsHistogram: React.FC<EventsHistogramProps> = (
   props: EventsHistogramProps
 ) => {
   const labels = Object.keys(props.EventsByDay).slice(
@@ -69,3 +69,5 @@ export const EventsHistogram: React.FC<EventsHistogramProps> = (
     </div>
   );
 };
+
+export default EventsHistogram;

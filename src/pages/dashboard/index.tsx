@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic";
 import { DashboardLoading } from "~/pages/dashboard/loading";
-import { EventsHistogram } from "~/components/EventsHistogram";
 import { DashboardStatBox } from "~/components/DashboardStatBox";
 import { EventsLayout } from "~/pages/dashboard/layout";
 import type { NextPage } from "next";
 import { api } from "~/utils/api";
+
+const EventsHistogram = dynamic(() => import("~/components/EventsHistogram"));
 
 export const Dashboard: NextPage = () => {
   const EventDataMetrics = api.sessiondata.getStatistics.useQuery().data;

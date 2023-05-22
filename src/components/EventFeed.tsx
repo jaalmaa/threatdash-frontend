@@ -8,7 +8,7 @@ type EventFeedProps = {
   maximumDisplayedEvents: number;
 };
 
-export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
+const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   const sessiondata = api.sessiondata.getAll.useQuery().data;
   const sortedSessionData = sessiondata?.sort((x, y) => {
     const xTimestamp = new Date(x.startTime).getTime();
@@ -72,3 +72,5 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
     </div>
   );
 };
+
+export default EventFeed;
