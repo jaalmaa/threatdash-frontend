@@ -1,5 +1,6 @@
 import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
+import Image from "next/image";
 
 export const Navbar: React.FC = () => {
   const user = useUser();
@@ -7,10 +8,22 @@ export const Navbar: React.FC = () => {
     <>
       <nav className="relative flex w-full flex-wrap bg-gray-800 py-4">
         <div className="flex h-8 w-full justify-between px-8">
-          <Link className="text-xl text-white" href="/">
+          <Link className="mx-4 text-xl text-white" href="/">
             Threatdash
           </Link>
           <div className="flex flex-row">
+            <a
+              href="https://github.com/jaalmaa/threatdash-frontend"
+              target="_blank"
+              className="mx-4 rounded-2xl px-2 pt-1.5 hover:bg-slate-700"
+            >
+              <Image
+                src="/github-logo.svg"
+                alt="View project on GitHub"
+                height="20"
+                width="20"
+              />
+            </a>
             <Link
               className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
               href="/about"
