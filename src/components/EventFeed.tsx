@@ -2,17 +2,17 @@ import type { sessiondata } from "@prisma/client";
 import { api } from "~/utils/api";
 import { useState } from "react";
 import { EventData } from "~/components/EventData";
-import { EventFeedLoading } from "~/components/EventFeedLoading";
+import { FeedLoading } from "~/pages/dashboard/feed/loading";
 
 type EventFeedProps = {
   maximumDisplayedEvents: number;
 };
 
-export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
+const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   const sessiondata = api.sessiondata.getAll.useQuery().data;
   const sortedSessionData = sessiondata?.sort((x, y) => {
-    let xTimestamp = new Date(x.startTime).getTime();
-    let yTimestamp = new Date(y.startTime).getTime();
+    const xTimestamp = new Date(x.startTime).getTime();
+    const yTimestamp = new Date(y.startTime).getTime();
     return yTimestamp - xTimestamp;
   });
   const [selectedSession, setSelectedSession] = useState<
@@ -20,8 +20,8 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   >(undefined);
 
   return (
-    <div className="flex h-full flex-row px-4">
-      <div className="w-1/2">
+    <div className="flex flex-row px-4">
+      <div className="w-1/2 pr-8">
         <div>
           {sortedSessionData ? (
             <table className="w-full text-center">
@@ -56,15 +56,15 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
               </tbody>
             </table>
           ) : (
-            <EventFeedLoading />
+            <FeedLoading />
           )}
         </div>
       </div>
-      <div className="flex h-full w-1/2 p-4">
+      <div className="flex w-1/2 flex-grow">
         {selectedSession ? (
           <EventData session={selectedSession} />
         ) : (
-          <p className="m-auto">
+          <p className="m-auto flex flex-grow justify-center">
             Select an item from the feed to view its details
           </p>
         )}
@@ -72,3 +72,5 @@ export const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
     </div>
   );
 };
+
+export default EventFeed;

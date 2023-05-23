@@ -46,7 +46,7 @@ export const api = createTRPCNext<AppRouter>({
             if (!ctx?.req?.headers) {
               return {};
             }
-            const { connection: _connection, ...headers } = ctx.req.headers;
+            const { ...headers } = ctx.req.headers;
             return headers;
           },
         }),
@@ -58,7 +58,7 @@ export const api = createTRPCNext<AppRouter>({
    *
    * @see https://trpc.io/docs/nextjs#ssr-boolean-default-false
    */
-  ssr: true,
+  ssr: false,
 });
 
 /**

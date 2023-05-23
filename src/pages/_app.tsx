@@ -12,14 +12,14 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <title>Threatdash</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ClerkProvider {...pageProps}>
-        <div className="max-w-screen min-w-screen flex max-h-screen min-h-screen flex-col">
+      <div className="flex h-full max-h-full w-full max-w-full flex-col">
+        <ClerkProvider {...pageProps}>
           <Navbar />
-          <main className="flex flex-grow bg-gray-800 py-4 text-neutral-100">
+          <main className="flex-grow bg-gray-800 text-neutral-100">
             <Component {...pageProps} />
           </main>
-        </div>
-      </ClerkProvider>
+        </ClerkProvider>
+      </div>
     </>
   );
 };

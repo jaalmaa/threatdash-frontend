@@ -1,5 +1,5 @@
 import type { sessiondata } from "@prisma/client";
-import { EventDataAccordion } from "./EventDataAccordion";
+import { Accordion } from "~/components/Accordion";
 
 export type EventDataProps = {
   session: sessiondata;
@@ -31,44 +31,44 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
             {props.session.credentials.password}
           </p>
         </span>
-        <EventDataAccordion displayName="Command History">
+        <Accordion displayName="Command History">
           <ul className="rounded-lg border px-2 py-1">
-            {props.session.commands.map((command: string) => {
+            {props.session.commands.map((command: string, id: number) => {
               return (
-                <li className="font-mono text-sm" key={command}>
+                <li className="font-mono text-sm" key={id}>
                   {command}
                 </li>
               );
             })}
           </ul>
-        </EventDataAccordion>
+        </Accordion>
         {showUrls ? (
-          <EventDataAccordion displayName="URLs">
+          <Accordion displayName="URLs">
             <ul className="rounded-lg border px-2 py-1">
-              {props.session.url.map((url: string) => {
+              {props.session.url.map((url: string, id: number) => {
                 return (
-                  <li className="font-mono text-sm" key={url}>
+                  <li className="font-mono text-sm" key={id}>
                     {url}
                   </li>
                 );
               })}
             </ul>
-          </EventDataAccordion>
+          </Accordion>
         ) : (
           ""
         )}
         {showHashes ? (
-          <EventDataAccordion displayName="File Hashes">
+          <Accordion displayName="File Hashes">
             <ul className="rounded-lg border px-2 py-1">
-              {props.session.shasum.map((shasum: string) => {
+              {props.session.shasum.map((shasum: string, id: number) => {
                 return (
-                  <li className="font-mono text-sm" key={shasum}>
+                  <li className="font-mono text-sm" key={id}>
                     {shasum}
                   </li>
                 );
               })}
             </ul>
-          </EventDataAccordion>
+          </Accordion>
         ) : (
           ""
         )}

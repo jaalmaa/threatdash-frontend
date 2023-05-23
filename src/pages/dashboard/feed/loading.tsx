@@ -1,4 +1,4 @@
-export const EventFeedLoading: React.FC = () => {
+export const FeedLoading: React.FC = () => {
   return (
     <ul className="mt-2 flex list-none flex-col space-y-2 px-4">
       {[...Array(10).keys()].map((i) => {
@@ -12,4 +12,4 @@ export const EventFeedLoading: React.FC = () => {
   );
 };
 
-export default EventFeedLoading;
+export default FeedLoading;

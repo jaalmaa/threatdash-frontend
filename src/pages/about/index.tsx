@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from "next";
 
 const AboutPage: NextPage = () => {
   return (
@@ -34,7 +34,7 @@ const AboutPage: NextPage = () => {
         <li>Configure alerts to be notified of specific types of attacks.</li>
       </ul>
       <p className="p-2 text-left">
-        Whether you're a hobbyist interested in cybersecurity or a security
+        Whether you&apos;re a hobbyist interested in cybersecurity or a security
         professional looking to stay ahead of the latest threats, Threatdash has
         something to offer, and has a range of features that make it easy to use
         and understand.
