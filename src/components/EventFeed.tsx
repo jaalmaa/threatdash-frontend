@@ -60,11 +60,11 @@ const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
           )}
         </div>
       </div>
-      <div className="flex h-full w-1/2 p-4">
+      <div className="flex w-1/2 flex-grow">
         {selectedSession ? (
           <EventData session={selectedSession} />
         ) : (
-          <p className="m-auto">
+          <p className="m-auto flex flex-grow justify-center">
             Select an item from the feed to view its details
           </p>
         )}
