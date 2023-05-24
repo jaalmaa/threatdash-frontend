@@ -26,8 +26,12 @@ export const Dashboard: NextPage = () => {
             displayValue={EventDataMetrics.TotalUniqueSources}
           />
           <DashboardStatBox
-            displayName="Unique Files Observed"
+            displayName="Unique Files"
             displayValue={EventDataMetrics.TotalUniqueHashes}
+          />
+          <DashboardStatBox
+            displayName="Unique URLs"
+            displayValue={EventDataMetrics.TotalUniqueURLs}
           />
         </div>
         <div className="my-4 h-3/5">
