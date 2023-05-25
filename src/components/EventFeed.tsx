@@ -20,47 +20,45 @@ const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   >(undefined);
 
   return (
-    <div className="flex flex-row px-4">
-      <div className="w-1/2 pr-8">
-        <div>
-          {sortedSessionData ? (
-            <table className="w-full text-center">
-              <thead>
-                <tr>
-                  <th>Timestamp</th>
-                  <th>Data Source</th>
-                  <th>Commands</th>
-                </tr>
-              </thead>
-              <tbody className="">
-                {sortedSessionData
-                  .slice(-props.maximumDisplayedEvents)
-                  .map((session: sessiondata) => {
-                    return (
-                      <tr
-                        key={session.id}
-                        className={
-                          "cursor-pointer hover:bg-slate-200 hover:text-slate-800" +
-                          (session.id === selectedSession?.id
-                            ? "border-collapse border-r-2 border-slate-200 hover:text-slate-800"
-                            : "border-collapse border-r-2 border-transparent hover:text-slate-800")
-                        }
-                        onClick={() => setSelectedSession(session)}
-                      >
-                        <td>{new Date(session.startTime).toUTCString()}</td>
-                        <td>{session.sensor}</td>
-                        <td>{session.commands.length}</td>
-                      </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-          ) : (
-            <FeedLoading />
-          )}
-        </div>
+    <div className="grid h-full w-full grid-cols-2 flex-row px-4">
+      <div className="mx-4 grid h-full">
+        {sortedSessionData ? (
+          <div>
+            <div className="mb-2 grid w-full grid-cols-4 text-center">
+              <div className="col-span-2 font-semibold">Timestamp</div>
+              <div className="font-semibold">Data Source</div>
+              <div className="font-semibold">Commands</div>
+            </div>
+            <div>
+              {sortedSessionData
+                .slice(-props.maximumDisplayedEvents)
+                .map((session: sessiondata, id: number) => {
+                  return (
+                    <div
+                      key={id}
+                      className={
+                        "grid cursor-pointer grid-cols-4 rounded-xl py-1 text-center hover:bg-slate-200 hover:text-slate-800" +
+                        (session.id === selectedSession?.id
+                          ? "border-collapse border-2 border-slate-200 hover:text-slate-800"
+                          : "border-collapse border-2 border-transparent hover:text-slate-800")
+                      }
+                      onClick={() => setSelectedSession(session)}
+                    >
+                      <div className="col-span-2">
+                        {new Date(session.startTime).toUTCString()}
+                      </div>
+                      <div>{session.sensor}</div>
+                      <div>{session.commands.length}</div>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        ) : (
+          <FeedLoading />
+        )}
       </div>
-      <div className="flex w-1/2 flex-grow">
+      <div className="mx-4 grid">
         {selectedSession ? (
           <EventData session={selectedSession} />
         ) : (

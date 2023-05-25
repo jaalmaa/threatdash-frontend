@@ -36,7 +36,7 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
             {props.session.commands.map((command: string, id: number) => {
               return (
                 <li className="font-mono text-sm" key={id}>
-                  {command}
+                  {`${id + 1}. ${command}`}
                 </li>
               );
             })}
