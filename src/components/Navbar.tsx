@@ -15,10 +15,12 @@ export const Navbar: React.FC = () => {
             <a
               href="https://github.com/jaalmaa/threatdash-frontend"
               target="_blank"
+              rel="_ noreferrer"
               className="mx-4 rounded-2xl px-2 pt-1.5 hover:bg-slate-700"
             >
               <Image
                 src="/github-logo.svg"
+                key="github-logo"
                 alt="View project on GitHub"
                 height="20"
                 width="20"
@@ -32,6 +34,7 @@ export const Navbar: React.FC = () => {
             </Link>
             <a
               target="_blank"
+              rel="_ noreferrer"
               className="mx-4 rounded-2xl px-4 pt-1 text-neutral-100 transition duration-150 hover:bg-slate-700 hover:text-white"
               href="https://blog.jaalma.io"
             >
