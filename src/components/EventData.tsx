@@ -1,5 +1,6 @@
 import type { sessiondata } from "@prisma/client";
 import { Accordion } from "~/components/Accordion";
+import { CopyToClipboardButton } from "./CopyToClipboardButton";
 
 export type EventDataProps = {
   session: sessiondata;
@@ -10,8 +11,8 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
   const showHashes: boolean = props.session.shasum.length !== 0;
 
   return (
-    <div className="w-full overflow-auto break-words">
-      <div className="text-sm">
+    <div className="w-full">
+      <div className="cursor-default text-sm">
         <p>Start time: {new Date(props.session.startTime).toUTCString()}</p>
         <p className={props.session.endTime ? "" : "font-bold"}>
           {props.session.endTime
@@ -36,7 +37,7 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
             {props.session.commands.map((command: string, id: number) => {
               return (
                 <li className="font-mono text-sm" key={id}>
-                  {`${id + 1}. ${command}`}
+                  <CopyToClipboardButton text={command} />
                 </li>
               );
             })}
@@ -48,7 +49,7 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
               {props.session.url.map((url: string, id: number) => {
                 return (
                   <li className="font-mono text-sm" key={id}>
-                    {url}
+                    <CopyToClipboardButton text={url} />
                   </li>
                 );
               })}
@@ -63,7 +64,7 @@ export const EventData: React.FC<EventDataProps> = (props: EventDataProps) => {
               {props.session.shasum.map((shasum: string, id: number) => {
                 return (
                   <li className="font-mono text-sm" key={id}>
-                    {shasum}
+                    <CopyToClipboardButton text={shasum} />
                   </li>
                 );
               })}

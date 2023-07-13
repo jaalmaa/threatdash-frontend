@@ -38,7 +38,7 @@ export const Accordion: React.FC<AccordionProps> = (props: AccordionProps) => {
           </summary>
         </details>
         <div
-          className={`select-all overflow-hidden transition-all duration-200 ease-in-out ${
+          className={`overflow-hidden transition-all duration-200 ease-in-out ${
             showChildren ? "block max-h-96 opacity-100" : "max-h-0"
           }`}
         >
