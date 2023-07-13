@@ -1,6 +1,7 @@
 import { UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
+import githubIcon from "../../public/github-logo.svg";
 
 export const Navbar: React.FC = () => {
   const user = useUser();
@@ -19,7 +20,8 @@ export const Navbar: React.FC = () => {
               className="mx-4 rounded-2xl px-2 pt-1.5 hover:bg-slate-700"
             >
               <Image
-                src="/github-logo.svg"
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                src={githubIcon}
                 key="github-logo"
                 alt="View project on GitHub"
                 height="20"
