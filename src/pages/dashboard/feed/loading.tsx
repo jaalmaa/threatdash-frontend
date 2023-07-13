@@ -4,7 +4,7 @@ export const FeedLoading: React.FC = () => {
       {[...Array(10).keys()].map((i) => {
         return (
           <li key={i}>
-            <div className="inline-block h-4 w-full animate-pulse justify-center rounded-lg bg-slate-600"></div>
+            <div className="inline-block h-4 w-full animate-pulse justify-center rounded-lg bg-slate-600 py-1"></div>
           </li>
         );
       })}
