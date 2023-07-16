@@ -1,11 +1,18 @@
 "use client";
 import { useState } from "react";
+import { Tooltip } from "~/components/Tooltip";
 
 const copyTextToClipboard = async (text: string) => {
   return await navigator.clipboard.writeText(text);
 };
 
-export const CopyToClipboardButton = (props: { text: string }) => {
+type CopyToClipboardButtonProps = {
+  text: string;
+};
+
+export const CopyToClipboardButton: React.FC<CopyToClipboardButtonProps> = (
+  props: CopyToClipboardButtonProps
+) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyClick = (text: string) => {
@@ -22,14 +29,14 @@ export const CopyToClipboardButton = (props: { text: string }) => {
   };
 
   return (
-    <span className="flex flex-row justify-between">
+    <span className="">
       <button
         onClick={() => handleCopyClick(props.text)}
         className="hover:text-slate-300"
       >
         <p className="overflow-auto break-all text-left">{props.text}</p>
       </button>
-      {isCopied ? <div className="text-white">Copied!</div> : ""}
+      {isCopied ? <Tooltip tooltipContent="Copied!" /> : ""}
     </span>
   );
 };
