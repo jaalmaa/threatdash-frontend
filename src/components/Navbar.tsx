@@ -7,9 +7,9 @@ export const Navbar: React.FC = () => {
   const user = useUser();
   return (
     <>
-      <nav className="relative flex w-full flex-wrap bg-gray-800 py-4">
+      <nav className="relative flex w-full flex-wrap bg-gray-800 py-4 xl:text-xl">
         <div className="flex h-8 w-full justify-between px-8">
-          <Link className="mx-4 text-xl text-white" href="/">
+          <Link className="mx-4 text-xl text-white xl:text-2xl" href="/">
             Threatdash
           </Link>
           <div className="flex flex-row">
