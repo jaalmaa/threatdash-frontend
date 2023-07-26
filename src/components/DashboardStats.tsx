@@ -7,7 +7,7 @@ const DashboardStatBox: React.FC<DashboardStatBoxProps> = (
   props: DashboardStatBoxProps
 ) => {
   return (
-    <div className="mx-4 flex h-full flex-1 flex-col rounded-lg border-2 border-slate-200 p-6 text-center font-semibold shadow-lg">
+    <div className="mx-4 flex h-full flex-1 flex-col rounded-lg border-2 border-slate-200 p-6 text-center font-semibold shadow-lg xl:text-xl">
       {props.displayName}
       <span className="m-auto text-6xl">{props.displayValue}</span>
     </div>
@@ -22,7 +22,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = (
   props: DashboardStatsProps
 ) => {
   return (
-    <div className="my-4 flex h-2/5 w-full flex-row px-8">
+    <>
       {props.data.map((stat: DashboardStatBoxProps, id: number) => {
         return (
           <DashboardStatBox
@@ -32,7 +32,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = (
           />
         );
       })}
-    </div>
+    </>
   );
 };
 

@@ -36,9 +36,11 @@ export const Dashboard: NextPage = () => {
   return (
     <EventsLayout>
       <div className="flex h-full flex-col">
-        <DashboardStats data={DashboardStatBoxes} />
+        <div className="my-4 flex h-2/5 w-full flex-row px-8 xl:h-1/5">
+          <DashboardStats data={DashboardStatBoxes} />
+        </div>
         <div className="my-4 h-3/5">
-          <div className="h-full">
+          <div className="h-full xl:h-1/2">
             <EventsHistogram
               MaximumDisplayedDays={20}
               EventsByDay={EventDataMetrics.EventsByDay}

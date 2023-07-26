@@ -21,7 +21,7 @@ export const EventsLayout: React.FC<EventsLayoutProps> = (
             <Link
               href="/dashboard"
               className={
-                `mx-2 inline-block cursor-pointer rounded-t-lg border-b-2 p-2 ` +
+                `mx-2 inline-block cursor-pointer rounded-t-lg border-b-2 p-2 xl:text-xl ` +
                 (currentRoute === "/dashboard"
                   ? "border-blue-300 text-blue-300"
                   : "border-transparent hover:border-gray-300 hover:text-gray-300")
@@ -32,7 +32,7 @@ export const EventsLayout: React.FC<EventsLayoutProps> = (
             <Link
               href="/dashboard/feed"
               className={
-                `mx-2 inline-block cursor-pointer rounded-t-lg border-b-2 p-2 ` +
+                `mx-2 inline-block cursor-pointer rounded-t-lg border-b-2 p-2 xl:text-xl ` +
                 (currentRoute === "/dashboard/feed"
                   ? "border-blue-300 text-blue-300"
                   : "border-transparent hover:border-gray-300 hover:text-gray-300")
