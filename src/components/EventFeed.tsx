@@ -20,11 +20,11 @@ const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
   >(undefined);
 
   return (
-    <div className="grid h-full w-full grid-cols-2 flex-row px-4">
+    <div className="grid h-full w-full grid-cols-2 flex-row px-4 xl:h-1/2">
       <div className="mx-4 grid h-full">
         {sortedSessionData ? (
           <div>
-            <div className="mb-2 grid w-full grid-cols-4 text-center">
+            <div className="mb-2 grid w-full grid-cols-4 text-center xl:text-lg">
               <div className="col-span-2 font-semibold">Timestamp</div>
               <div className="font-semibold">Data Source</div>
               <div className="font-semibold">Commands</div>
@@ -44,11 +44,13 @@ const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
                       }
                       onClick={() => setSelectedSession(session)}
                     >
-                      <div className="col-span-2">
+                      <div className="col-span-2 xl:text-lg">
                         {new Date(session.startTime).toUTCString()}
                       </div>
-                      <div>{session.sensor}</div>
-                      <div>{session.commands.length}</div>
+                      <div className="xl:text-lg">{session.sensor}</div>
+                      <div className="xl:text-lg">
+                        {session.commands.length}
+                      </div>
                     </div>
                   );
                 })}
@@ -62,7 +64,7 @@ const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
         {selectedSession ? (
           <EventData session={selectedSession} />
         ) : (
-          <p className="m-auto flex flex-grow justify-center">
+          <p className="m-auto flex flex-grow justify-center xl:text-xl">
             Select an item from the feed to view its details
           </p>
         )}

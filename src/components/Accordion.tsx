@@ -16,7 +16,7 @@ export const Accordion: React.FC<AccordionProps> = (props: AccordionProps) => {
             className="list-none"
             onClick={() => setshowChildren(!showChildren)}
           >
-            <span className="mb-1 flex select-none flex-row justify-between text-sm font-semibold">
+            <span className="mb-1 flex select-none flex-row justify-between text-sm font-semibold xl:text-lg">
               {props.displayName}
               <div>
                 <svg
