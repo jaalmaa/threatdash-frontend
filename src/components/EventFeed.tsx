@@ -37,10 +37,10 @@ const EventFeed: React.FC<EventFeedProps> = (props: EventFeedProps) => {
                     <div
                       key={id}
                       className={
-                        "grid cursor-pointer grid-cols-4 rounded-xl py-1 text-center hover:bg-slate-200 hover:text-slate-800" +
+                        "grid cursor-pointer grid-cols-4 rounded-xl py-1 text-center " +
                         (session.id === selectedSession?.id
-                          ? "border-collapse border-2 border-slate-200 hover:text-slate-800"
-                          : "border-collapse border-2 border-transparent hover:text-slate-800")
+                          ? " bg-slate-800"
+                          : " hover:bg-slate-800")
                       }
                       onClick={() => setSelectedSession(session)}
                     >
