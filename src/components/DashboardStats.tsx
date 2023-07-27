@@ -7,7 +7,7 @@ const DashboardStatBox: React.FC<DashboardStatBoxProps> = (
   props: DashboardStatBoxProps
 ) => {
   return (
-    <div className="mx-4 flex h-full flex-1 flex-col rounded-lg border-2 border-slate-200 p-6 text-center font-semibold shadow-lg xl:text-xl">
+    <div className="mx-4 flex h-full flex-1 flex-col rounded-lg border-2 border-slate-200 p-6 text-center font-semibold shadow-lg 2xl:text-xl">
       {props.displayName}
       <span className="m-auto text-6xl">{props.displayValue}</span>
     </div>
